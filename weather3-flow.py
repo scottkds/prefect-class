@@ -28,6 +28,11 @@ def save_weather(current_temp: str):
     with open("temps.txt", "a") as f:
         f.write(current_temp + "\n")
 
+@flow
+def do_nothing():
+    logger = get_run_logger()
+    logger.info("* * * This is my subflow  * * *")
+
 
 @flow
 def fetch_weather_scott2():
@@ -39,6 +44,7 @@ def fetch_weather_scott2():
         event="This_is_an_event",
         resource={"prefect.resource.id": "NoIdHere"},
         )
+    do_nothing()
 
 
 
